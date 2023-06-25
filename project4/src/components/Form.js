@@ -3,6 +3,7 @@ import React from "react";
 export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
     event.preventDefault();
+
     const name = event.target.elements["form-name"].value;
     const isForGoodWeather = event.target.elements["checkbox"].checked;
 
@@ -15,6 +16,7 @@ export default function Form({ onAddActivity }) {
 
     // reset the form
     event.target.reset();
+    event.target.elements.name.focus();
   }
 
   return (
