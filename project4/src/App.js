@@ -1,17 +1,44 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Form from "./components/Form";
 import List from "./components/List";
 import { uid } from "uid";
-// import useLocalStorageState from "use-local-storage-state";
+import Weather from "./components/Weather";
+import useLocalStorageState from "use-local-storage-state";
+
+const URL = "https://example-apis.vercel.app/api/weather";
 
 function App() {
-  // const [activities, setActivities] = useLocalStorageState("activities", []);
-  // console.log(useLocalStorageState);
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useLocalStorageState("activities", {
+    defaultValue: [],
+  });
+
+  const [weather, setWeather] = useState("");
+
+  const filteredActivities = activities.filter((activity) =>
+    weather.isGoodWeather
+      ? activity.isForGoodWeather
+      : !activity.isForGoodWeather
+  );
+
+  useEffect(() => {
+    async function fetchWeather() {
+      try {
+        const response = await fetch(URL);
+        const weather = await response.json();
+        setWeather(weather);
+      } catch (error) {
+        console.log("ERROR in FETCH: ", error);
+      }
+      const id = setInterval(fetchWeather, 10000);
+      return () => {
+        clearInterval(id);
+      };
+    }
+    fetchWeather();
+  }, [setWeather]);
 
   function handleAddActivity(newActivity) {
-    console.log("newAct:", newActivity);
     setActivities([
       {
         id: uid(),
@@ -26,16 +53,15 @@ function App() {
       activities.filter((activity) => activity !== activityToDelete)
     );
   }
-  // const isGoodWeather = true;
-  // function filterGoodWeather(activities) {
-  //   activities.filter(
-  //     (activity) => (activity.isForGoodWeather = isGoodWeather)
-  //   );
-  // }
+
   return (
     <>
       <h1>Weather App</h1>
-      <List onDeleteActivities={handleRemoveActivity} activities={activities} />
+      <Weather weather={weather} />
+      <List
+        onDeleteActivities={handleRemoveActivity}
+        activities={filteredActivities}
+      />
       <Form onAddActivity={handleAddActivity} />
     </>
   );
