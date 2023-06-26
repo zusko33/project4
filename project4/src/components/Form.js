@@ -1,5 +1,5 @@
 import React from "react";
-import { uid } from "uid";
+// import { uid } from "uid";
 
 export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
@@ -7,14 +7,9 @@ export default function Form({ onAddActivity }) {
 
     const formData = new FormData(event.target);
     const submittedData = Object.fromEntries(formData);
+    console.log("sbdata:", submittedData);
 
-    const data = {
-      name: submittedData.name,
-      isForGoodWeather: event.target.elements.checkbox.checked,
-      id: uid(),
-    };
-
-    onAddActivity(data);
+    onAddActivity(submittedData);
 
     // reset the form
     event.target.reset();

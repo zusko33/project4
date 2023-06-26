@@ -1,10 +1,11 @@
 export default function List({ activities, onDeleteActivities }) {
+  console.log(activities);
   return (
     <>
       <ul className="activities-list">
         {activities.map((activity, index) => (
           <li key={index} className="activities-list_item">
-            <h3>{activity}</h3>
+            <h3>{activity.name}</h3>
             <button
               className="activities-item_button"
               type="button"
