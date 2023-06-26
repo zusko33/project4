@@ -1,0 +1,24 @@
+.activities-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.activities-list_item {
+  display: flex;
+  align-items: center;
+  background-color: lightpink;
+  color: black;
+  font-size: 14px;
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  line-height: 1;
+  gap: 0.8rem;
+}
+.activities-item_button {
+  border-radius: 50%;
+  border: none;
+  background-color: rgb(245, 223, 226);
+}
