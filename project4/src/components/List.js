@@ -1,5 +1,4 @@
 export default function List({ activities, onDeleteActivities }) {
-  console.log(activities);
   return (
     <>
       <ul className="activities-list">
