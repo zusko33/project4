@@ -62,6 +62,7 @@ function App() {
           onDeleteActivities={handleRemoveActivity}
           activities={filteredActivities}
         />
+        <hr className="divider" role="none" />
         <Form onAddActivity={handleAddActivity} />
       </main>
     </div>

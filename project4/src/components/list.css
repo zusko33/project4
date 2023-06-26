@@ -11,9 +11,9 @@
   align-items: center;
   background-color: lightpink;
   color: black;
-  font-size: 14px;
+  font-size: 13px;
   border-radius: 999px;
-  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  padding: 0rem 0.8rem 0rem 0.8rem;
   line-height: 1;
   gap: 0.8rem;
 }
@@ -21,4 +21,15 @@
   border-radius: 50%;
   border: none;
   background-color: rgb(245, 223, 226);
+  transition: background-color 0.3s ease-in-out;
+  padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+}
+
+.activities-item_button:hover {
+  background-color: rgb(183, 162, 162);
+  cursor: pointer;
+}
+
+h5 {
+  font-size: 13px;
 }
