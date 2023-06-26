@@ -1,4 +1,4 @@
-export default function List({ activities, onDeleteActivities }) {
+export default function List({ activities, onDeleteActivities, onFilter }) {
   console.log(activities);
   return (
     <>
