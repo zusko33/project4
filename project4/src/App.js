@@ -27,14 +27,15 @@ function App() {
         const weather = await response.json();
         setWeather(weather);
       } catch (error) {
-        console.log("ERROR in FETCH: ", error);
+        console.log("FETCH: ", error);
       }
-      const id = setInterval(fetchWeather, 10000);
-      return () => {
-        clearInterval(id);
-      };
     }
     fetchWeather();
+
+    const id = setInterval(fetchWeather, 5000);
+    return () => {
+      clearInterval(id);
+    };
   }, [setWeather]);
 
   function handleAddActivity(newActivity) {

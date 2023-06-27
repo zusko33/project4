@@ -47,3 +47,8 @@ input {
   background-color: rgb(198, 185, 185);
   cursor: pointer;
 }
+
+#form-name {
+  max-width: 50%;
+  align-self: center;
+}
